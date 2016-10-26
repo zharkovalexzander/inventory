@@ -22,6 +22,7 @@ public class Slots : MonoBehaviour, IDropHandler {
         if(!item)
         {
             DragHandle.DraggedItem.transform.SetParent(transform);
+            ExecuteEvents.ExecuteHierarchy<IChanged>(gameObject, null, (x, y) => x.Changed());
         }
     }
 
