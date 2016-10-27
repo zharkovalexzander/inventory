@@ -38,14 +38,14 @@ public class DragHandle : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
         pointer = true;
         if (DraggedItem.transform.parent.transform.parent.transform.name == "Ventory")
         {
-            Ventory.transform.SetSiblingIndex(4);
-            Player.transform.SetSiblingIndex(3);
+            Ventory.transform.SetSiblingIndex(5);
+            Player.transform.SetSiblingIndex(4);
             DraggedItem.transform.parent.transform.SetAsLastSibling();
         }
         else
         {
-            Ventory.transform.SetSiblingIndex(3);
-            Player.transform.SetSiblingIndex(4);
+            Ventory.transform.SetSiblingIndex(4);
+            Player.transform.SetSiblingIndex(5);
         }
     }
 
