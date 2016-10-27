@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class DragHandle : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler {
     public static GameObject DraggedItem;
+    private Transform _trabs;
+    public bool pointer;
     Vector3 StartPosition;
     Transform StartParent;
     [SerializeField]
@@ -28,6 +30,8 @@ public class DragHandle : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
         HealthText.text = "Health : " + DraggedItem.GetComponent<StatItem>().HealthValue.ToString();
         ArmorText.text = "Armor : " + DraggedItem.GetComponent<StatItem>().ArmorValue.ToString();
         StrText.text = "Strength : " +  DraggedItem.GetComponent<StatItem>().StrengthValue.ToString();
+        _trabs = transform;
+        pointer = true;
     }
 
     #endregion
@@ -45,16 +49,26 @@ public class DragHandle : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        DraggedItem = null;
-        GetComponent<CanvasGroup>().blocksRaycasts = true;
-        if (transform.parent == StartParent)
-        {
-            transform.position = StartPosition;
-        }
-        maininfo.text = string.Empty;
-        HealthText.text = string.Empty;
-        ArmorText.text = string.Empty;
-        StrText.text = string.Empty;
+            DraggedItem = null;
+            GetComponent<CanvasGroup>().blocksRaycasts = true;
+            if (transform.parent.name != _trabs.GetChild(0).name && transform.parent.name.IndexOf("Panel") == -1)
+            {
+                transform.parent = StartParent;
+                transform.position = StartPosition;
+                pointer = false;
+            }
+            else
+            {
+                if (transform.parent == StartParent)
+                {
+                    transform.position = StartPosition;
+                }
+                pointer = true;
+            }
+            maininfo.text = string.Empty;
+            HealthText.text = string.Empty;
+            ArmorText.text = string.Empty;
+            StrText.text = string.Empty;
     }
 
     #endregion

@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.EventSystems;
-
+using UnityEngine.UI;
 public class Slots : MonoBehaviour, IDropHandler {
+    [SerializeField]
+    Text a;
     public GameObject item
     {
         get

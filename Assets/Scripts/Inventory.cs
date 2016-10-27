@@ -15,6 +15,8 @@ public class Inventory : MonoBehaviour, IChanged {
     Text strText;
     [SerializeField]
     Transform player;
+    [SerializeField]
+    Text info;
 	// Use this for initialization
 	void Start () { }
 
@@ -29,6 +31,7 @@ public class Inventory : MonoBehaviour, IChanged {
         {
             GameObject item = slotTrans.GetComponent<Slots>().item;
             if (item == null) continue;
+            if (item.transform.parent.name != item.transform.GetChild(0).name) continue;
             hp += item.gameObject.GetComponent<StatItem>().HealthValue;
             ar += item.gameObject.GetComponent<StatItem>().ArmorValue;
             st += item.gameObject.GetComponent<StatItem>().StrengthValue;
