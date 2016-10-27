@@ -40,11 +40,7 @@ public class DragHandle : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
         {
             Ventory.transform.SetSiblingIndex(4);
             Player.transform.SetSiblingIndex(3);
-            int DraggedItemIndex = DraggedItem.transform.parent.transform.GetSiblingIndex();
-            Vector3 pso = Ventory.transform.GetChild(11).transform.position;
-            Ventory.transform.GetChild(11).transform.SetSiblingIndex(DraggedItemIndex);
             DraggedItem.transform.parent.transform.SetAsLastSibling();
-            StartPosition = pso;
         }
         else
         {
