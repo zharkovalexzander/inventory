@@ -17,6 +17,10 @@ public class DragHandle : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     Text ArmorText;
     [SerializeField]
     Text StrText;
+    [SerializeField]
+    Transform Ventory;
+    [SerializeField]
+    Transform Player;
 
     #region IBeginDragHandler implementation
 
@@ -32,6 +36,21 @@ public class DragHandle : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
         StrText.text = "Strength : " +  DraggedItem.GetComponent<StatItem>().StrengthValue.ToString();
         _trabs = transform;
         pointer = true;
+        if (DraggedItem.transform.parent.transform.parent.transform.name == "Ventory")
+        {
+            Ventory.transform.SetSiblingIndex(4);
+            Player.transform.SetSiblingIndex(3);
+            int DraggedItemIndex = DraggedItem.transform.parent.transform.GetSiblingIndex();
+            Vector3 pso = Ventory.transform.GetChild(11).transform.position;
+            Ventory.transform.GetChild(11).transform.SetSiblingIndex(DraggedItemIndex);
+            DraggedItem.transform.parent.transform.SetAsLastSibling();
+            StartPosition = pso;
+        }
+        else
+        {
+            Ventory.transform.SetSiblingIndex(3);
+            Player.transform.SetSiblingIndex(4);
+        }
     }
 
     #endregion
@@ -63,6 +82,7 @@ public class DragHandle : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
                 {
                     transform.position = StartPosition;
                 }
+
                 pointer = true;
             }
             maininfo.text = string.Empty;

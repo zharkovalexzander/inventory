@@ -26,6 +26,20 @@ public class Slots : MonoBehaviour, IDropHandler {
             DragHandle.DraggedItem.transform.SetParent(transform);
             ExecuteEvents.ExecuteHierarchy<IChanged>(gameObject, null, (x, y) => x.Changed());
         }
+        else
+        {
+            if ((item.transform.GetChild(0).transform.name != DragHandle.DraggedItem.transform.GetChild(0).transform.name && item.transform.parent.transform.name.IndexOf("Panel") == -1) || (item.transform.GetChild(0).transform.name != DragHandle.DraggedItem.transform.GetChild(0).transform.name && DragHandle.DraggedItem.transform.parent.transform.name.IndexOf("Panel") == -1))
+            {
+
+            }
+            else
+            {
+                Transform parent = item.transform.parent;
+                item.transform.SetParent(DragHandle.DraggedItem.transform.parent);
+                DragHandle.DraggedItem.transform.SetParent(transform);
+                ExecuteEvents.ExecuteHierarchy<IChanged>(gameObject, null, (x, y) => x.Changed());
+            }
+        }
     }
 
     #endregion
