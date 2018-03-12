@@ -1,25 +1,23 @@
 [
   {
-    'breed': "Dachshund",
+    "breed": "Dachshund",
   },
   {
-    'breed': "Terrier",
-    'subBreeds':
-    [
-      { 'breed': "Medium Terrier" },
-      { 'breed': "Toy-Terrier" }
+    "breed": "Terrier",
+    "subBreeds": [
+      { "breed": "Medium Terrier" },
+      { "breed": "Toy-Terrier" }
     ]
   },
   {
-    'breed': "Sighthound",
-    'subBreeds':
-    [
-      { 'breed': "Long-haired Sighthound" },
-      { 'breed': "Short-haired Sighthound" },
-      { 'breed': "Rough-haired Sighthound" }
+    "breed": "Sighthound",
+    "subBreeds":[
+      { "breed": "Long-haired Sighthound" },
+      { "breed": "Short-haired Sighthound" },
+      { "breed": "Rough-haired Sighthound" }
     ]
   },
   {
-    'breed': "Scent hound"
+    "breed": "Scent hound"
   }
 ]
