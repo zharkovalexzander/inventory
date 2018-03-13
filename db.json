@@ -3,7 +3,11 @@
     "breed": "Terrier",
     "subbreeds" : [
       {
-        "breed": "Toy-Terrier"
+        "breed": "Toy-Terrier",
+        "subbreeds" : [
+            {
+              "breed": "Small-Toy-Terrier"
+            }
       }
     ] 
   },
